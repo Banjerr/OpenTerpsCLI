@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"openterpscli/strain"
+	"openterpscli/terpene"
 	"os"
 
 	"github.com/urfave/cli/v2"
@@ -120,6 +121,44 @@ VERSION:
 					{
 						Name:  "update",
 						Usage: "update an existing strain",
+						Action: func(c *cli.Context) error {
+							fmt.Println("removed task template: ", c.Args().First())
+							return nil
+						},
+					},
+				},
+			},
+			{
+				Name:  "terpene",
+				Usage: "options for terpenes",
+				Subcommands: []*cli.Command{
+					{
+						Name:  "get",
+						Usage: "get a(ll) terpene(s)",
+						Action: func(c *cli.Context) error {
+							terpene.GetTerpenes(BaseURL)
+							return nil
+						},
+					},
+					{
+						Name:  "add",
+						Usage: "add a new terpene",
+						Action: func(c *cli.Context) error {
+							fmt.Println("new task template: ", c.Args().First())
+							return nil
+						},
+					},
+					{
+						Name:  "remove",
+						Usage: "remove an existing terpene",
+						Action: func(c *cli.Context) error {
+							fmt.Println("removed task template: ", c.Args().First())
+							return nil
+						},
+					},
+					{
+						Name:  "update",
+						Usage: "update an existing terpene",
 						Action: func(c *cli.Context) error {
 							fmt.Println("removed task template: ", c.Args().First())
 							return nil
